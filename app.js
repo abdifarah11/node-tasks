@@ -11,7 +11,7 @@ const server = http.CraeteServer((req,res)=>{
     }else{
         res.writeHead(404,'not found',{'content-type':'apliocation/json'})
         res.end(json.stringify({
-            messge: 'sorr page not found'
+            messge: 'sorr page not founded'
         }))
     }
     
