@@ -3,14 +3,13 @@ const { readTasksFromFile, writeTasksToFile } = require("../utils/filehandling")
 const { copyFileSync } = require('fs');
 const path = require("path");
 
-// Function to get all tasks
+
 exports.getTasks = (req, res) => {
     const tasks = readTasksFromFile();
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(tasks));
 };
 
-// Function to create a new task
 exports.createTask = (req, res) => {
     const form = new IncomingForm();
 
@@ -42,13 +41,12 @@ exports.createTask = (req, res) => {
     });
 };
 
-// Function to update a task
 exports.updateTask = (req, res) => {
     res.writeHead(501, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ message: 'Not implemented' }));
 };
 
-// Function to delete a task
+
 exports.deleteTask = (req, res) => {
     res.writeHead(501, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ message: 'Not implemented for delete' }));
