@@ -1,5 +1,5 @@
 {
-  "name": "task_node",
+  "name": "tasks",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {

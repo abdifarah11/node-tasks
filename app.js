@@ -1,20 +1,22 @@
-const { task, json } = require('fp-ts');
+const { task, JSON } = require('fp-ts');
 const http = require('http');
-const { hostname } = require('os');
+
 const taskRoutes = require('./routes/taskRoutes');
 
-const hostname = 'localhost'
-const port = 8000
-const server = http.CraeteServer((req,res)=>{
-    if(req.url.startwich('/tasks')) {
-        taskRoutes(req,res)
-    }else{
-        res.writeHead(404,'not found',{'content-type':'apliocation/json'})
-        res.end(json.stringify({
-            messge: 'sorr page not founded'
-        }))
+const host = 'localhost';
+const port = 8000;
+
+const server = http.createServer((req, res) => {
+    if (req.url.startsWith('/tasks')) {
+        taskRoutes(req, res);
+    } else {
+        res.writeHead(404, 'Not Found', { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+            message: 'Sorry, page not found'
+        }));
     }
-    
-server.listen(port,hostname,)
-    console.log('server is euning on port ${port}')
-})
+});
+
+server.listen(port, host, () => {
+    console.log(`Server is running on port ${port}`);
+});
