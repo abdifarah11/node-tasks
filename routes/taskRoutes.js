@@ -1,22 +1,20 @@
-const { JSON } = require("fp-ts");
-const { createTask, gotTask, updateTask, deleteTask } = require("../controllers/taskcontroller");
+const { createTask, gotTask, updateTask, deleteTask, getTasks } = require("../controllers/taskcontroller");
 
-const taskRoutes = (res,req)=>{
-if (req.method === 'GET') {
-gotTask(req,res);
-    
-} else if(req === 'POST'){
-createTask(req,res)
-}else if(req === 'PATCH'){
-    updateTask(req,res )
-}else if(req === 'DELETE'){
-    deleteTask(req,res)
-}else{
-    res.writeHead(404, 'data is not found ',{'content-type': 'aplication/JSON '})
-    res.end(JSON.stringify({
-        message:'unknown method request .'
+const taskRoutes = (req, res) => {
+    if (req.method === 'GET') {
+        getTasks(req, res);
+    } else if (req.method === 'POST') {
+        createTask(req, res);
+    } else if (req.method === 'PATCH') {
+        updateTask(req, res);
+    } else if (req.method === 'DELETE') {
+        deleteTask(req, res);
+    } else {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+            message: 'Unknown method request.'
+        }));
+    }
+};
 
-    }))
-}
-     }
 module.exports = taskRoutes;
