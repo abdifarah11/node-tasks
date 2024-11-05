@@ -35,10 +35,21 @@ task.push(newTask);
 writeTasksTofile(task);
 if(files.Image){
     copyfileSync(files.Image.path,path.join(__dirname, '../uploads/',files.Image.name))
+    res.end(JSON.stringify(newTask))
 }
 
 
 })
 
 
+}
+exports.updateTask = (req,res)=>{
+    res.JSON.stringify({
+        message: 'not implemented'
+    })
+}
+exports.deleteTask=(res,req)=>{
+res.JSON.stringify({
+    message: 'note implemned for delete'
+})
 }

@@ -1,5 +1,5 @@
 const { JSON } = require("fp-ts");
-const { createTask, gotTask } = require("../controllers/taskcontroller");
+const { createTask, gotTask, updateTask, deleteTask } = require("../controllers/taskcontroller");
 
 const taskRoutes = (res,req)=>{
 if (req.method === 'GET') {
